@@ -1,0 +1,132 @@
+Event & Club Management System
+(Hackathon-Ready Explanation + Build Plan)
+🎯 Goal (Simple Words)
+Create a web-based system where:
+Students (Participants) can register for events and see updates
+Organizers (Admins) can create events, manage participants, and send announcements
+No complex login, no payments — just clean core functionality.
+1️⃣ System Overview (High Level)
+Two roles
+👤 Participant (User)
+🛠 Admin (Organizer)
+One shared system
+Events
+Registrations
+Status tracking
+Announcements
+2️⃣ Participant Flow (User Side)
+What a participant can do:
+View available events
+Register for an event
+Check registration status
+Pending
+Confirmed
+Rejected
+Receive announcements
+Event updates
+Schedule changes
+Important notices
+Example Flow:
+Copy code
+
+User opens website
+→ Sees list of events
+→ Clicks "Register"
+→ Status = Pending
+→ Admin confirms
+→ Status updates to Confirmed
+→ User sees announcement
+3️⃣ Admin Flow (Organizer Side)
+What admin can do:
+Create events
+Title
+Description
+Date & venue
+View registered participants
+Update participant status
+Pending → Confirmed / Rejected
+Send announcements
+Visible to all registered users
+Example Flow:
+Copy code
+
+Admin logs in
+→ Creates event
+→ Views registrations
+→ Confirms participants
+→ Sends announcement
+4️⃣ Suggested Tech Stack (Simple & Fast)
+You can choose any, but this is hackathon-friendly:
+Frontend
+HTML + CSS + JavaScript
+OR
+React + Vite (recommended if you know React)
+Backend
+Node.js + Express
+OR
+Just mock backend using JSON (allowed)
+Database (Optional)
+Mock JSON data
+OR SQLite / PostgreSQL
+👉 Mock data is totally acceptable as per problem statement.
+5️⃣ Database / Data Structure (Simple)
+Event
+Copy code
+Json
+{
+  "id": 1,
+  "title": "CodeSprint Hackathon",
+  "date": "2026-02-10",
+  "description": "One-day coding event"
+}
+Participant
+Copy code
+Json
+{
+  "id": 101,
+  "name": "Aman",
+  "email": "aman@gmail.com",
+  "eventId": 1,
+  "status": "pending"
+}
+Announcement
+Copy code
+Json
+{
+  "eventId": 1,
+  "message": "Reporting time is 9 AM"
+}
+6️⃣ Pages / Screens to Build (Minimum)
+Participant Pages
+/events → View events
+/register → Register
+/status → Check status
+/announcements → View updates
+Admin Pages
+/admin/events → Create/manage events
+/admin/participants → View & update status
+/admin/announcements → Send messages
+⚠️ Authentication can be hardcoded:
+/admin route = admin
+/user route = participant
+7️⃣ Demo Plan (Very Important for Hackathon)
+During demo:
+Show event creation (Admin)
+Register user for event
+Show status = Pending
+Admin confirms user
+Show updated status
+Admin sends announcement
+User receives announcement
+This wins points because judges see complete flow.
+8️⃣ What to Explain to Judges
+Design Decisions
+Simple role-based views
+Status-based participant tracking
+Mock data for speed
+Future Improvements
+Login & authentication
+Email / WhatsApp notifications
+QR-based attendance
+Mobile app
+Payment integration
