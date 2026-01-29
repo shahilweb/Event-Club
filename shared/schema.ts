@@ -1,34 +1,34 @@
 
-import { pgTable, text, serial, timestamp, integer, boolean } from "drizzle-orm/pg-core";
+import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 import { relations } from "drizzle-orm";
 
 // === TABLE DEFINITIONS ===
 
-export const events = pgTable("events", {
-  id: serial("id").primaryKey(),
+export const events = sqliteTable("events", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
   title: text("title").notNull(),
   description: text("description").notNull(),
-  date: timestamp("date").notNull(),
+  date: integer("date", { mode: "timestamp" }).notNull(),
   location: text("location").notNull(),
 });
 
-export const registrations = pgTable("registrations", {
-  id: serial("id").primaryKey(),
+export const registrations = sqliteTable("registrations", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
   eventId: integer("event_id").notNull(),
   name: text("name").notNull(),
   email: text("email").notNull(),
   status: text("status", { enum: ["pending", "confirmed", "rejected"] }).default("pending").notNull(),
-  createdAt: timestamp("created_at").defaultNow(),
+  createdAt: integer("created_at", { mode: "timestamp" }).$defaultFn(() => new Date()),
 });
 
-export const announcements = pgTable("announcements", {
-  id: serial("id").primaryKey(),
+export const announcements = sqliteTable("announcements", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
   eventId: integer("event_id"), // Nullable for general announcements if needed, but per specs mainly for events
   title: text("title").notNull(),
   message: text("message").notNull(),
-  postedAt: timestamp("posted_at").defaultNow(),
+  postedAt: integer("posted_at", { mode: "timestamp" }).$defaultFn(() => new Date()),
 });
 
 // === RELATIONS ===

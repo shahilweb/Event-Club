@@ -1,5 +1,11 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { api, buildUrl, type CreateEventRequest, type CreateRegistrationRequest, type UpdateRegistrationStatusRequest, type CreateAnnouncementRequest } from "@shared/routes";
+import { api, buildUrl } from "@shared/routes";
+import type {
+  CreateEventRequest,
+  CreateRegistrationRequest,
+  CreateAnnouncementRequest,
+  UpdateRegistrationStatusRequest,
+} from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
 
 // ==========================================

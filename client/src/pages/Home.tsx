@@ -15,7 +15,7 @@ export default function Home() {
         >
           <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-primary-foreground backdrop-blur-sm">
             <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
-            Hackathon Season 2024 is Live
+            Hackathon Season 2026 is Live
           </div>
           <h1 className="text-5xl md:text-7xl font-display font-bold tracking-tight text-white">
             Manage your <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400">Events</span>
@@ -63,7 +63,7 @@ export default function Home() {
         </div>
 
         <div className="pt-12 text-sm text-muted-foreground">
-          <p>© 2024 EventClub OS. Built for speed and simplicity.</p>
+          <p>© 2026 EventClub OS. Built for speed and simplicity.</p>
         </div>
       </div>
     </div>

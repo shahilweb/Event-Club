@@ -1,6 +1,7 @@
 import { useEvent, useEventRegistrations, useUpdateRegistrationStatus, useCreateAnnouncement } from "@/hooks/use-events";
 import { useRoute, useLocation } from "wouter";
 import { Navbar } from "@/components/Navbar";
+import { EventQRCode } from "@/components/EventQRCode";
 import { Loader2, ArrowLeft, Calendar, MapPin, Check, X, BellPlus, Mail } from "lucide-react";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
@@ -78,7 +79,7 @@ export default function EventDetails() {
 
         {/* Event Header */}
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 mb-10">
-          <div>
+          <div className="flex-1">
             <h1 className="text-3xl font-display font-bold text-white mb-2">{event.title}</h1>
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
               <span className="flex items-center"><Calendar className="h-4 w-4 mr-2" /> {format(new Date(event.date), "MMMM d, yyyy h:mm a")}</span>
@@ -86,13 +87,16 @@ export default function EventDetails() {
             </div>
           </div>
           
-          <Dialog open={announcementOpen} onOpenChange={setAnnouncementOpen}>
-            <DialogTrigger asChild>
-              <Button className="shadow-lg shadow-primary/20">
-                <BellPlus className="h-4 w-4 mr-2" />
-                Post Announcement
-              </Button>
-            </DialogTrigger>
+          <div className="flex flex-col gap-4">
+            <EventQRCode eventId={eventId} eventTitle={event.title} />
+            
+            <Dialog open={announcementOpen} onOpenChange={setAnnouncementOpen}>
+              <DialogTrigger asChild>
+                <Button className="shadow-lg shadow-primary/20">
+                  <BellPlus className="h-4 w-4 mr-2" />
+                  Post Announcement
+                </Button>
+              </DialogTrigger>
             <DialogContent className="sm:max-w-[500px] bg-card border-border">
               <DialogHeader>
                 <DialogTitle>New Announcement</DialogTitle>
@@ -126,7 +130,8 @@ export default function EventDetails() {
                 </Button>
               </div>
             </DialogContent>
-          </Dialog>
+            </Dialog>
+          </div>
         </div>
 
         {/* Registrations Table */}

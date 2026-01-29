@@ -82,7 +82,7 @@ export default function CreateEvent() {
                   <FormItem>
                     <FormLabel>Event Title</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g. Summer Hackathon 2024" {...field} className="bg-background/50" />
+                      <Input placeholder="e.g. Summer Hackathon 2026" {...field} className="bg-background/50" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
